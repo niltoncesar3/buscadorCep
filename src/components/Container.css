@@ -4,12 +4,12 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: linear-gradient(#121212, #212b46);
+  background: linear-gradient(#3b7a97, #1d202b);
 }
 
 .title {
-  font-size: 85px;
-  color: #fff;
+  font-size: 60px;
+  color: #0d1013;
   animation: flipTitle 2s;
 }
 
@@ -24,7 +24,7 @@
 }
 
 .containerInput {
-  background-color: rgba(2255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
   padding: 15px;
   margin: 34px 0;
   display: flex;
@@ -36,7 +36,7 @@
   background-color: transparent;
   border: 0;
   font-size: 20px;
-  color: #fff;
+  color: #ca9191;
   outline: none;
   margin-right: 8px;
 }
@@ -64,14 +64,14 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #fff;
-  width: 500px;
+  background-color: #949df1;
+  width: 450px;
   border-radius: 8px;
 }
 
 .main h2 {
   margin: 16px 0;
-  font-size: 39px;
+  font-size: 35px;
 }
 
 .main span {

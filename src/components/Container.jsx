@@ -1,32 +1,68 @@
-import React from 'react'
+import React, { useState } from 'react'
+import api from '../services/api'
 
 import './Container.css'
 
 import {FiSearch} from 'react-icons/fi'
 
 const Container = () => {
+
+  const [input, setInput] = useState('');
+  const [cep, setCep] = useState({})
+
+  const handleInput = (e) => {
+    const value = e.target.value;
+    setInput(value)
+  }
+
+  const  handleSearch = async() => {
+    if(input === '') {
+      alert('Preencha algum cep')
+      return
+    }
+
+    try {
+      const response = await api.get(`${input}/json`)
+      setCep(response.data)
+      setInput('')
+      
+    } catch (error) {
+      alert('Erro')
+      setInput('')
+      
+    }
+
+
+  }
+
+
   return (
     <div className='container'>
-      <h1 className='title'>Buscador CEP</h1>
+      <h1 className='title'>Zip code here </h1>
         <div className='containerInput'>
         <input type="text"
           name="" 
           id="" 
-          placeholder='Digite seu cep'/>
-          <button className='buttonSearch'>
+          placeholder='Search here'
+          value={input}
+          onChange={handleInput}/>
+          <button className='buttonSearch' onClick={handleSearch}>
             <FiSearch size={25} color='#fff'/>
           </button>
 
         </div>
-        
-         <main className='main'>
-          <h2>Cep: 15998745647</h2>
-          <span>Rua : teste</span>
-          <span>Complemento : Algum complemento</span>
-          <span>Bairro : Vila maria</span>
-          <span>Estado : </span>
+
+
+        {Object.keys(cep).length > 0  && (
+          <main className='main'>
+          <h2>Zip code: {cep.cep}</h2>
+          <span>Street : {cep.logradouro}</span>
+          <span>Neighborhood : {cep.bairro}</span>
+          <span>State : {cep.uf} </span>
 
          </main>
+        )}
+         
       
     </div>
   )
